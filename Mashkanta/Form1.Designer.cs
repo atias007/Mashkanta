@@ -35,19 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.grdCourses = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnDemo = new System.Windows.Forms.Button();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.colType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInterestGap = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +45,18 @@
             this.colLoanPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colButton = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDemo = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.txtAmount = new Mashkanta.Controls.CurrencyTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdCourses)).BeginInit();
             this.panel1.SuspendLayout();
@@ -100,141 +99,6 @@
             this.grdCourses.TabIndex = 2;
             this.grdCourses.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCourses_CellContentClick);
             this.grdCourses.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdCourses_CellFormatting);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.btnDemo);
-            this.panel1.Controls.Add(this.txtAmount);
-            this.panel1.Controls.Add(this.btnStart);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(9, 9);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(8);
-            this.panel1.Size = new System.Drawing.Size(1074, 73);
-            this.panel1.TabIndex = 4;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(682, 11);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(84, 46);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "סימולציה";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // btnDemo
-            // 
-            this.btnDemo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDemo.Location = new System.Drawing.Point(772, 11);
-            this.btnDemo.Name = "btnDemo";
-            this.btnDemo.Size = new System.Drawing.Size(84, 47);
-            this.btnDemo.TabIndex = 8;
-            this.btnDemo.Text = "הדגמה";
-            this.btnDemo.UseVisualStyleBackColor = true;
-            this.btnDemo.Click += new System.EventHandler(this.btnDemo_Click);
-            // 
-            // btnStart
-            // 
-            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStart.Location = new System.Drawing.Point(862, 11);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(84, 47);
-            this.btnStart.TabIndex = 6;
-            this.btnStart.Text = "התחל";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Location = new System.Drawing.Point(8, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1058, 25);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "סך ההלוואה:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.grdCourses);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Enabled = false;
-            this.panel2.Location = new System.Drawing.Point(9, 82);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(8);
-            this.panel2.Size = new System.Drawing.Size(1074, 255);
-            this.panel2.TabIndex = 5;
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(799, 196);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(84, 46);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "מיחזור";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(889, 196);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 46);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "ייצוא";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Location = new System.Drawing.Point(8, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1058, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "תמהיל";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel3.Controls.Add(this.tabControl1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(9, 337);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(8);
-            this.panel3.Size = new System.Drawing.Size(1074, 312);
-            this.panel3.TabIndex = 6;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(8, 8);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.RightToLeftLayout = true;
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1058, 296);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 23);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1050, 269);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "כל המסלולים";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // colType
             // 
@@ -317,6 +181,128 @@
             this.colButton.ReadOnly = true;
             this.colButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnDemo);
+            this.panel1.Controls.Add(this.txtAmount);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(9, 9);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(8);
+            this.panel1.Size = new System.Drawing.Size(1074, 73);
+            this.panel1.TabIndex = 4;
+            // 
+            // btnDemo
+            // 
+            this.btnDemo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDemo.Location = new System.Drawing.Point(862, 15);
+            this.btnDemo.Name = "btnDemo";
+            this.btnDemo.Size = new System.Drawing.Size(84, 47);
+            this.btnDemo.TabIndex = 8;
+            this.btnDemo.Text = "הדגמה";
+            this.btnDemo.UseVisualStyleBackColor = true;
+            this.btnDemo.Click += new System.EventHandler(this.btnDemo_Click);
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Location = new System.Drawing.Point(8, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(1058, 25);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "סך ההלוואה:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.grdCourses);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(9, 82);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(8);
+            this.panel2.Size = new System.Drawing.Size(1074, 255);
+            this.panel2.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(8, 196);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(104, 46);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "ייצוא לאקסל";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Location = new System.Drawing.Point(8, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1058, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "תמהיל";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel3.Controls.Add(this.tabControl1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(9, 337);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(8);
+            this.panel3.Size = new System.Drawing.Size(1074, 312);
+            this.panel3.TabIndex = 6;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(8, 8);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.RightToLeftLayout = true;
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1058, 296);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1050, 269);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "כל המסלולים";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(875, 196);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(98, 46);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "שמור הצעה";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Location = new System.Drawing.Point(742, 196);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(127, 46);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "השווה הצעות...";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // txtAmount
             // 
             this.txtAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -341,7 +327,7 @@
             this.Padding = new System.Windows.Forms.Padding(9);
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
-            this.Text = "Form1";
+            this.Text = "מחשבון משכנתה";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdCourses)).EndInit();
@@ -361,7 +347,6 @@
         private System.Windows.Forms.DataGridView grdCourses;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private Controls.CurrencyTextBox txtAmount;
@@ -371,8 +356,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridViewComboBoxColumn colType;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInterestGap;
@@ -383,6 +366,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colLoanPercentage;
         private System.Windows.Forms.DataGridViewTextBoxColumn colResult;
         private System.Windows.Forms.DataGridViewLinkColumn colButton;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

@@ -13,6 +13,7 @@ namespace Mashkanta
     {
         private BindingList<Course> _dataSource = new BindingList<Course>();
         private Mix _mix = new Mix();
+        private List<Mix> _savedMixes = new List<Mix>();
 
         public Form1()
         {
@@ -40,16 +41,11 @@ namespace Mashkanta
                 item.StopAtPeriod = null;
             }
 
+            button3.Enabled = true;
+            _mix = new Mix();
             _mix.Courses.Clear();
             _mix.TotalLoan = double.Parse(txtAmount.Text);
             _mix.Courses.AddRange(_dataSource);
-
-            //var prime1 = new Course { Type = Course.CourseType.Prime, Amount = 363000, InterestGap = -0.7, Period = 290, StopAtPeriod = 180 };
-            //prime1.Calc();
-            //var prime2 = new Course { Type = Course.CourseType.Prime, Amount = prime1.Result.RemainFund, InterestGap = 0.7, Period = 18, StartMonth = 181 };
-            //var prime = new Course { Type = Course.CourseType.Prime, Amount = 363000, InterestGap = -0.7, Period = 290 };
-            //var fix = new Course { Type = Course.CourseType.Fix, Amount = 462000, InterestGap = 3.2, Period = 159 };
-            //var varpi = new Course { Type = Course.CourseType.VariablePriceIndex, Amount = 275000, InterestGap = 2.5, Period = 180 };
 
             _mix.Calc();
             RefreshResult();
@@ -91,9 +87,6 @@ namespace Mashkanta
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            panel1.Enabled = false;
-            panel2.Enabled = true;
-            _mix.TotalLoan = double.Parse(txtAmount.Text);
         }
 
         private void btnDemo_Click(object sender, EventArgs e)
@@ -131,30 +124,6 @@ namespace Mashkanta
             Process.Start("report.csv");
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            var prime = new Course { Type = Course.CourseType.Prime, Amount = 363000, InterestGap = -0.7, Period = 240 };
-            var fix = new Course { Type = Course.CourseType.Fix, Amount = 737000, InterestGap = 3.2, Period = 180 };
-            var varpi = new Course { Type = Course.CourseType.VariablePriceIndex, Amount = 0, InterestGap = 2.5, Period = 120 };
-
-            var result = string.Empty;
-            var gap = 1000;
-
-            for (int i = 0; i <= 737000; i += gap)
-            {
-                varpi.Amount += gap;
-                fix.Amount -= gap;
-                var mix = new Mix
-                {
-                    TotalLoan = prime.Amount + fix.Amount + varpi.Amount,
-                };
-                mix.Courses.AddRange(new[] { prime, fix, varpi });
-                mix.Calc();
-
-                result += $"{mix.TotalInterestAndPriceIndex:N2},{fix.Amount},{varpi.Amount}\r\n";
-            }
-        }
-
         private void grdCourses_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
@@ -168,8 +137,15 @@ namespace Mashkanta
                 else
                 {
                     var course = senderGrid.Rows[e.RowIndex].DataBoundItem as Course;
-                    _mix.Recycle(course, new RecycleCourse { InterestGap = -0.7, Period = 40, FromMonth = 121 });
-                    RefreshResult();
+                    using (var f = new frmRecycle(course))
+                    {
+                        var dialog = f.ShowDialog(this);
+                        if (dialog == DialogResult.OK)
+                        {
+                            _mix.Recycle(course, f.Result);
+                            RefreshResult();
+                        }
+                    }
                 }
             }
         }
@@ -182,6 +158,13 @@ namespace Mashkanta
             {
                 e.Value = "מחזור";
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            button3.Enabled = false;
+            _savedMixes.Add(_mix);
+            MessageBox.Show("הצעה נשמרה בהצלחה", "הודעה...", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
         }
     }
 }
