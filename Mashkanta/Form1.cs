@@ -17,7 +17,6 @@ namespace Mashkanta
         public Form1()
         {
             InitializeComponent();
-            //bindingSource1.DataSource = Enum.GetNames(typeof(Course.CourseType));
 
             var ds = new List<LookupItem>
             {
@@ -36,6 +35,11 @@ namespace Mashkanta
 
         private void button1_Click(object sender, EventArgs e)
         {
+            foreach (var item in _dataSource)
+            {
+                item.StopAtPeriod = null;
+            }
+
             _mix.Courses.Clear();
             _mix.TotalLoan = double.Parse(txtAmount.Text);
             _mix.Courses.AddRange(_dataSource);
@@ -82,6 +86,7 @@ namespace Mashkanta
         private void Form1_Load(object sender, EventArgs e)
         {
             grdCourses.DataSource = _dataSource;
+            colButton.DisplayIndex = grdCourses.Columns.Count - 1;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -150,10 +155,33 @@ namespace Mashkanta
             }
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
+        private void grdCourses_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _mix.Recycle(_mix.Courses[0], new Course { InterestGap = -0.7, Period = 48 });
-            RefreshResult();
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewLinkColumn && e.RowIndex >= 0)
+            {
+                if (_mix.TotalPayments.Count == 0)
+                {
+                    MessageBox.Show("לביצוע מחזור תחילה יש לבצע חישוב", "שגיאה...", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+                }
+                else
+                {
+                    var course = senderGrid.Rows[e.RowIndex].DataBoundItem as Course;
+                    _mix.Recycle(course, new RecycleCourse { InterestGap = -0.7, Period = 40, FromMonth = 121 });
+                    RefreshResult();
+                }
+            }
+        }
+
+        private void grdCourses_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewLinkColumn && e.RowIndex >= 0 && e.RowIndex < senderGrid.Rows.Count - 1)
+            {
+                e.Value = "מחזור";
+            }
         }
     }
 }

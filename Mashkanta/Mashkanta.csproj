@@ -58,6 +58,7 @@
     <Compile Include="Courses\VariablePriceIndex.cs" />
     <Compile Include="Entities\LookupItem.cs" />
     <Compile Include="Entities\Mix.cs" />
+    <Compile Include="Entities\RecycleCourse.cs" />
     <Compile Include="Forecast\ForecastUtil.cs" />
     <Compile Include="Forecast\ForecastItem.cs" />
     <Compile Include="Form1.cs">

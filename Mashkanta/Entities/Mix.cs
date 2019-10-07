@@ -77,15 +77,20 @@ namespace Mashkanta.Entities
             SetTotalPayments();
         }
 
-        public void Recycle(Course source, Course target)
+        public void Recycle(Course source, RecycleCourse recycleCourse)
         {
-            target.Type = source.Type;
-            target.Amount = source.Result.RemainingFund;
-            target.StartMonth = source.Result.Payments.Count + 1;
+            source.StopAtPeriod = recycleCourse.FromMonth - 1;
+            Calc();
 
-            target.Calc();
+            var temp = new Course();
+            temp.Type = source.Type;
+            temp.Amount = source.Result.RemainingFund;
+            temp.StartMonth = source.Result.Payments.Count + 1;
+            temp.Period = recycleCourse.Period;
+            temp.InterestGap = recycleCourse.InterestGap;
+            temp.Calc();
 
-            source.Result.Payments.AddRange(target.Result.Payments);
+            source.Result.Payments.AddRange(temp.Result.Payments);
             SetTotalPayments();
         }
 

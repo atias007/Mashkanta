@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.grdCourses = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.btnDemo = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -55,9 +57,8 @@
             this.colStopAtPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLoanPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button3 = new System.Windows.Forms.Button();
+            this.colButton = new System.Windows.Forms.DataGridViewLinkColumn();
             this.txtAmount = new Mashkanta.Controls.CurrencyTextBox();
-            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdCourses)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -69,7 +70,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(829, 196);
+            this.button1.Location = new System.Drawing.Point(979, 196);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 46);
             this.button1.TabIndex = 0;
@@ -89,13 +90,16 @@
             this.colStartMonth,
             this.colStopAtPeriod,
             this.colLoanPercentage,
-            this.colResult});
+            this.colResult,
+            this.colButton});
             this.grdCourses.Dock = System.Windows.Forms.DockStyle.Top;
             this.grdCourses.Location = new System.Drawing.Point(8, 33);
             this.grdCourses.Name = "grdCourses";
             this.grdCourses.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.grdCourses.Size = new System.Drawing.Size(908, 157);
+            this.grdCourses.Size = new System.Drawing.Size(1058, 157);
             this.grdCourses.TabIndex = 2;
+            this.grdCourses.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCourses_CellContentClick);
+            this.grdCourses.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdCourses_CellFormatting);
             // 
             // panel1
             // 
@@ -108,13 +112,24 @@
             this.panel1.Location = new System.Drawing.Point(9, 9);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(8);
-            this.panel1.Size = new System.Drawing.Size(924, 73);
+            this.panel1.Size = new System.Drawing.Size(1074, 73);
             this.panel1.TabIndex = 4;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(682, 11);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(84, 46);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "סימולציה";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnDemo
             // 
             this.btnDemo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDemo.Location = new System.Drawing.Point(622, 11);
+            this.btnDemo.Location = new System.Drawing.Point(772, 11);
             this.btnDemo.Name = "btnDemo";
             this.btnDemo.Size = new System.Drawing.Size(84, 47);
             this.btnDemo.TabIndex = 8;
@@ -125,7 +140,7 @@
             // btnStart
             // 
             this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStart.Location = new System.Drawing.Point(712, 11);
+            this.btnStart.Location = new System.Drawing.Point(862, 11);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(84, 47);
             this.btnStart.TabIndex = 6;
@@ -138,7 +153,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.Location = new System.Drawing.Point(8, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(908, 25);
+            this.label2.Size = new System.Drawing.Size(1058, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "סך ההלוואה:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -155,13 +170,23 @@
             this.panel2.Location = new System.Drawing.Point(9, 82);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(8);
-            this.panel2.Size = new System.Drawing.Size(924, 255);
+            this.panel2.Size = new System.Drawing.Size(1074, 255);
             this.panel2.TabIndex = 5;
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Location = new System.Drawing.Point(799, 196);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(84, 46);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "מיחזור";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(739, 196);
+            this.button2.Location = new System.Drawing.Point(889, 196);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 46);
             this.button2.TabIndex = 3;
@@ -174,7 +199,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Location = new System.Drawing.Point(8, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(908, 25);
+            this.label1.Size = new System.Drawing.Size(1058, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "תמהיל";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -187,7 +212,7 @@
             this.panel3.Location = new System.Drawing.Point(9, 337);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(8);
-            this.panel3.Size = new System.Drawing.Size(924, 283);
+            this.panel3.Size = new System.Drawing.Size(1074, 312);
             this.panel3.TabIndex = 6;
             // 
             // tabControl1
@@ -198,7 +223,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeftLayout = true;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(908, 267);
+            this.tabControl1.Size = new System.Drawing.Size(1058, 296);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -206,7 +231,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(900, 240);
+            this.tabPage1.Size = new System.Drawing.Size(1050, 269);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "כל המסלולים";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -223,18 +248,18 @@
             // colAmount
             // 
             this.colAmount.DataPropertyName = "Amount";
-            dataGridViewCellStyle5.Format = "N0";
-            this.colAmount.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Format = "N0";
+            this.colAmount.DefaultCellStyle = dataGridViewCellStyle1;
             this.colAmount.HeaderText = "סכום";
             this.colAmount.Name = "colAmount";
             // 
             // colInterestGap
             // 
             this.colInterestGap.DataPropertyName = "InterestGap";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = "0";
-            this.colInterestGap.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.colInterestGap.DefaultCellStyle = dataGridViewCellStyle2;
             this.colInterestGap.HeaderText = "ריבית/מרווח %";
             this.colInterestGap.Name = "colInterestGap";
             this.colInterestGap.Width = 120;
@@ -249,8 +274,8 @@
             // colYears
             // 
             this.colYears.DataPropertyName = "Years";
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            this.colYears.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            this.colYears.DefaultCellStyle = dataGridViewCellStyle3;
             this.colYears.HeaderText = "תקופה (שנים)";
             this.colYears.Name = "colYears";
             this.colYears.ReadOnly = true;
@@ -267,16 +292,16 @@
             this.colStopAtPeriod.DataPropertyName = "StopAtPeriod";
             this.colStopAtPeriod.HeaderText = "חודש עצירה";
             this.colStopAtPeriod.Name = "colStopAtPeriod";
+            this.colStopAtPeriod.Visible = false;
             // 
             // colLoanPercentage
             // 
             this.colLoanPercentage.DataPropertyName = "LoanPercentage";
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            this.colLoanPercentage.DefaultCellStyle = dataGridViewCellStyle8;
-            this.colLoanPercentage.HeaderText = "אחוז מההלוואה";
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            this.colLoanPercentage.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colLoanPercentage.HeaderText = "% מההלוואה";
             this.colLoanPercentage.Name = "colLoanPercentage";
             this.colLoanPercentage.ReadOnly = true;
-            this.colLoanPercentage.Width = 150;
             // 
             // colResult
             // 
@@ -285,44 +310,29 @@
             this.colResult.Name = "colResult";
             this.colResult.Visible = false;
             // 
-            // button3
+            // colButton
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(532, 11);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(84, 46);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "סימולציה";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.colButton.HeaderText = "מחזור";
+            this.colButton.Name = "colButton";
+            this.colButton.ReadOnly = true;
+            this.colButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // txtAmount
             // 
             this.txtAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmount.Format = "N0";
-            this.txtAmount.Location = new System.Drawing.Point(802, 36);
+            this.txtAmount.Location = new System.Drawing.Point(952, 36);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(111, 22);
             this.txtAmount.TabIndex = 7;
             this.txtAmount.Text = "0";
             this.txtAmount.Value = 0D;
             // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(649, 196);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(84, 46);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "מיחזור";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 629);
+            this.ClientSize = new System.Drawing.Size(1092, 658);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -361,6 +371,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridViewComboBoxColumn colType;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInterestGap;
@@ -370,8 +382,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colStopAtPeriod;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLoanPercentage;
         private System.Windows.Forms.DataGridViewTextBoxColumn colResult;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridViewLinkColumn colButton;
     }
 }
 
