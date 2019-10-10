@@ -1,4 +1,5 @@
 ﻿using Mashkanta.Entities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,6 +33,27 @@ namespace Mashkanta
             (colType as DataGridViewComboBoxColumn).DataSource = ds.OrderBy(i => i.Title).ToList();
             (colType as DataGridViewComboBoxColumn).ValueMember = "Value";
             (colType as DataGridViewComboBoxColumn).DisplayMember = "Title";
+        }
+
+        public Form1(Mix mix) : this()
+        {
+            _mix = mix;
+
+            txtAmount.Value = _mix.TotalLoan;
+            foreach (var item in mix.Courses)
+            {
+                _dataSource.Add(item);
+            }
+
+            RefreshResult();
+            panel1.Visible = false;
+            panel2.Height = 195;
+            colButton.Visible = false;
+            colType.ReadOnly = true;
+            colAmount.ReadOnly = true;
+            colInterestGap.ReadOnly = true;
+            colPeriod.ReadOnly = true;
+            grdCourses.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -85,10 +107,6 @@ namespace Mashkanta
             colButton.DisplayIndex = grdCourses.Columns.Count - 1;
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-        }
-
         private void btnDemo_Click(object sender, EventArgs e)
         {
             txtAmount.Value = 1100000;
@@ -98,7 +116,6 @@ namespace Mashkanta
             _dataSource.Add(prime);
             _dataSource.Add(fix);
             _dataSource.Add(varpi);
-            btnStart_Click(null, null);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -144,6 +161,7 @@ namespace Mashkanta
                         {
                             _mix.Recycle(course, f.Result);
                             RefreshResult();
+                            button3.Enabled = true;
                         }
                     }
                 }
@@ -162,9 +180,20 @@ namespace Mashkanta
 
         private void button3_Click(object sender, EventArgs e)
         {
+            var cloneMixJson = JsonConvert.SerializeObject(_mix);
+            var cloneMix = JsonConvert.DeserializeObject<Mix>(cloneMixJson);
+            cloneMix.ReCalc();
             button3.Enabled = false;
-            _savedMixes.Add(_mix);
+            _savedMixes.Add(cloneMix);
             MessageBox.Show("הצעה נשמרה בהצלחה", "הודעה...", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (var f = new frmCompare(_savedMixes))
+            {
+                f.ShowDialog();
+            }
         }
     }
 }

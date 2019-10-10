@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace Mashkanta
 {
@@ -10,54 +9,17 @@ namespace Mashkanta
             Payments = new List<Payment>();
         }
 
-        public double TotalReturn
-        {
-            get
-            {
-                return Utils.Round2(Payments.Sum(p => p.TotalPayment));
-            }
-        }
+        public double TotalReturn { get; set; }
 
-        public double TotalInterestAndPriceIndex
-        {
-            get
-            {
-                return Utils.Round2(Payments.Sum(p => p.InterestPayment) + Payments.Sum(p => p.FundPaymentWithPriceIndex) - Payments.Sum(p => p.FundPayment));
-            }
-        }
+        public double TotalInterestAndPriceIndex { get; set; }
 
-        public double MaxMonthReturn
-        {
-            get
-            {
-                return Payments.Max(p => p.TotalPayment);
-            }
-        }
+        public double MaxMonthReturn { get; set; }
 
-        public double MinMonthReturn
-        {
-            get
-            {
-                return Payments.Min(p => p.TotalPayment);
-            }
-        }
+        public double MinMonthReturn { get; set; }
 
-        public double Ratio
-        {
-            get
-            {
-                return Utils.Round2(TotalReturn / Payments.Sum(p => p.FundPayment));
-            }
-        }
+        public double Ratio { get; set; }
 
-        public double RemainingFund
-        {
-            get
-            {
-                var payment = Payments.Last();
-                return Utils.Round2(payment.TotalFund - payment.FundPayment);
-            }
-        }
+        public double RemainingFund { get; set; }
 
         public List<Payment> Payments { get; private set; }
     }

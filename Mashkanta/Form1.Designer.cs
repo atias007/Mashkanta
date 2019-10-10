@@ -45,25 +45,25 @@
             this.colLoanPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colButton = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDemo = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtAmount = new Mashkanta.Controls.CurrencyTextBox();
+            this.btnDemo = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.grdCourses)).BeginInit();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -181,39 +181,6 @@
             this.colButton.ReadOnly = true;
             this.colButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnDemo);
-            this.panel1.Controls.Add(this.txtAmount);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(9, 9);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(8);
-            this.panel1.Size = new System.Drawing.Size(1074, 73);
-            this.panel1.TabIndex = 4;
-            // 
-            // btnDemo
-            // 
-            this.btnDemo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDemo.Location = new System.Drawing.Point(862, 15);
-            this.btnDemo.Name = "btnDemo";
-            this.btnDemo.Size = new System.Drawing.Size(84, 47);
-            this.btnDemo.TabIndex = 8;
-            this.btnDemo.Text = "הדגמה";
-            this.btnDemo.UseVisualStyleBackColor = true;
-            this.btnDemo.Click += new System.EventHandler(this.btnDemo_Click);
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Location = new System.Drawing.Point(8, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1058, 25);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "סך ההלוואה:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.button4);
@@ -228,6 +195,29 @@
             this.panel2.Padding = new System.Windows.Forms.Padding(8);
             this.panel2.Size = new System.Drawing.Size(1074, 255);
             this.panel2.TabIndex = 5;
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Location = new System.Drawing.Point(742, 196);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(127, 46);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "השווה הצעות...";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(875, 196);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(98, 46);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "שמור הצעה";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -281,27 +271,15 @@
             this.tabPage1.Text = "כל המסלולים";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // label2
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(875, 196);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 46);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "שמור הצעה";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(742, 196);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(127, 46);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "השווה הצעות...";
-            this.button4.UseVisualStyleBackColor = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Location = new System.Drawing.Point(8, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(1058, 25);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "סך ההלוואה:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtAmount
             // 
@@ -313,6 +291,29 @@
             this.txtAmount.TabIndex = 7;
             this.txtAmount.Text = "0";
             this.txtAmount.Value = 0D;
+            // 
+            // btnDemo
+            // 
+            this.btnDemo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDemo.Location = new System.Drawing.Point(862, 15);
+            this.btnDemo.Name = "btnDemo";
+            this.btnDemo.Size = new System.Drawing.Size(84, 47);
+            this.btnDemo.TabIndex = 8;
+            this.btnDemo.Text = "הדגמה";
+            this.btnDemo.UseVisualStyleBackColor = true;
+            this.btnDemo.Click += new System.EventHandler(this.btnDemo_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnDemo);
+            this.panel1.Controls.Add(this.txtAmount);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(9, 9);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(8);
+            this.panel1.Size = new System.Drawing.Size(1074, 73);
+            this.panel1.TabIndex = 4;
             // 
             // Form1
             // 
@@ -331,12 +332,12 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdCourses)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -345,13 +346,9 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView grdCourses;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private Controls.CurrencyTextBox txtAmount;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.Button btnDemo;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabControl tabControl1;
@@ -368,6 +365,10 @@
         private System.Windows.Forms.DataGridViewLinkColumn colButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label2;
+        private Controls.CurrencyTextBox txtAmount;
+        private System.Windows.Forms.Button btnDemo;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

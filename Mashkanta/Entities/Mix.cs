@@ -17,45 +17,15 @@ namespace Mashkanta.Entities
 
         public List<Payment> TotalPayments { get; private set; }
 
-        public double Ratio
-        {
-            get
-            {
-                return Utils.Round2(Courses.Sum(c => c.Result.TotalReturn) / TotalLoan);
-            }
-        }
+        public double Ratio { get; private set; }
 
-        public double MaxMonthReturn
-        {
-            get
-            {
-                return Utils.Round2(TotalPayments.Max(p => p.TotalPayment));
-            }
-        }
+        public double MaxMonthReturn { get; private set; }
 
-        public double MinMonthReturn
-        {
-            get
-            {
-                return Utils.Round2(TotalPayments.First().TotalPayment);
-            }
-        }
+        public double MinMonthReturn { get; private set; }
 
-        public double TotalReturn
-        {
-            get
-            {
-                return Utils.Round2(Courses.Sum(p => p.Result.TotalReturn));
-            }
-        }
+        public double TotalReturn { get; private set; }
 
-        public double TotalRemainingFund
-        {
-            get
-            {
-                return Utils.Round2(Courses.Sum(p => p.Result.RemainingFund));
-            }
-        }
+        public double TotalRemainingFund { get; private set; }
 
         public double TotalInterestAndPriceIndex
         {
@@ -75,6 +45,7 @@ namespace Mashkanta.Entities
             }
 
             SetTotalPayments();
+            SetVariables();
         }
 
         public void Recycle(Course source, RecycleCourse recycleCourse)
@@ -92,6 +63,23 @@ namespace Mashkanta.Entities
 
             source.Result.Payments.AddRange(temp.Result.Payments);
             SetTotalPayments();
+            ReCalc();
+        }
+
+        public void ReCalc()
+        {
+            Courses.ForEach(c => c.ReCalc());
+
+            SetVariables();
+        }
+
+        private void SetVariables()
+        {
+            Ratio = Utils.Round2(Courses.Sum(c => c.Result.TotalReturn) / TotalLoan);
+            MaxMonthReturn = Utils.Round2(TotalPayments.Max(p => p.TotalPayment));
+            MinMonthReturn = Utils.Round2(TotalPayments.First().TotalPayment);
+            TotalReturn = Utils.Round2(Courses.Sum(p => p.Result.TotalReturn));
+            TotalRemainingFund = Utils.Round2(Courses.Sum(p => p.Result.RemainingFund));
         }
 
         private void SetTotalPayments()

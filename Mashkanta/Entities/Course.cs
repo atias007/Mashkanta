@@ -1,4 +1,5 @@
 ﻿using Mashkanta.Courses;
+using System.Linq;
 
 namespace Mashkanta
 {
@@ -62,6 +63,19 @@ namespace Mashkanta
                 default:
                     break;
             }
+
+            ReCalc();
+        }
+
+        public void ReCalc()
+        {
+            Result.TotalReturn = Utils.Round2(Result.Payments.Sum(p => p.TotalPayment));
+            Result.TotalInterestAndPriceIndex = Utils.Round2(Result.Payments.Sum(p => p.InterestPayment) + Result.Payments.Sum(p => p.FundPaymentWithPriceIndex) - Result.Payments.Sum(p => p.FundPayment));
+            Result.MaxMonthReturn = Result.Payments.Max(p => p.TotalPayment);
+            Result.MinMonthReturn = Result.Payments.Min(p => p.TotalPayment);
+            Result.Ratio = Utils.Round2(Result.TotalReturn / Result.Payments.Sum(p => p.FundPayment));
+            var payment = Result.Payments.Last();
+            Result.RemainingFund = Utils.Round2(payment.TotalFund - payment.FundPayment);
         }
 
         public double Years
