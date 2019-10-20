@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Mashkanta
@@ -110,9 +111,9 @@ namespace Mashkanta
         private void btnDemo_Click(object sender, EventArgs e)
         {
             txtAmount.Value = 1100000;
-            var prime = new Course { Type = Course.CourseType.Prime, Amount = 363000, InterestGap = -0.7, Period = 290 };
-            var fix = new Course { Type = Course.CourseType.Fix, Amount = 462000, InterestGap = 3.2, Period = 159 };
-            var varpi = new Course { Type = Course.CourseType.VariablePriceIndex, Amount = 275000, InterestGap = 2.5, Period = 180 };
+            var prime = new Course { Type = Course.CourseType.Prime, Amount = 363000, InterestGap = -0.7, Period = 240 };
+            var fix = new Course { Type = Course.CourseType.Fix, Amount = 462000, InterestGap = 3.2, Period = 180 };
+            var varpi = new Course { Type = Course.CourseType.VariablePriceIndex, Amount = 275000, InterestGap = 2.59, Period = 120 };
             _dataSource.Add(prime);
             _dataSource.Add(fix);
             _dataSource.Add(varpi);
@@ -123,21 +124,23 @@ namespace Mashkanta
             var data = string.Empty;
 
             data += "Total\r\n";
+            data += "תקופה,חודש,ריבית חודשי,ריבית שנתי,ריבית,קרן,קרן צמודה,יתרת קרן,יתרת קרן צמודה,תשלום חודשי\r\n";
             foreach (var p in _mix.TotalPayments)
             {
-                data += $"{p.Period + 1},{p.PeriodDate:MM/yyyy},{p.InterestMonthPercentage:N4}%,\"{p.TotalPayment:N0}\"\r\n";
+                data += $"{p.Period},{p.PeriodDate:MM/yyyy},{p.InterestMonthPercentage:N4}%,{p.InterestYearPercentage:N4}%,\"{p.InterestPayment:N0}\",\"{p.FundPayment:N0}\",\"{p.FundPaymentWithPriceIndex:N0}\",\"{p.TotalFund:N0}\",\"{p.TotalFundWithPriceIndex:N0}\",\"{p.TotalPayment:N0}\"\r\n";
             }
 
             foreach (var c in _mix.Courses)
             {
                 data += $"\r\n{c.Type}\r\n";
+                data += "תקופה,חודש,ריבית חודשי,ריבית שנתי,מדד שנתי,ריבית,קרן,יתרת קרן,תשלום חודשי\r\n";
                 foreach (var p in c.Result.Payments)
                 {
-                    data += $"{p.Period + 1},{p.PeriodDate:MM/yyyy},{p.InterestMonthPercentage:N4},\"{p.TotalPayment:N2}\",{p.InterestPayment}\r\n";
+                    data += $"{p.Period},{p.PeriodDate:MM/yyyy},{p.InterestMonthPercentage:N4}%,{p.InterestYearPercentage:N4}%,{p.PriceIndex:N4}%,\"{p.InterestPayment:N0}\",\"{p.FundPayment:N0}\",\"{p.FundPaymentWithPriceIndex:N0}\",\"{p.TotalFund:N0}\",\"{p.TotalFundWithPriceIndex:N0}\",\"{p.TotalPayment:N0}\"\r\n";
                 }
             }
 
-            File.WriteAllText("report.csv", data);
+            File.WriteAllText("report.csv", data, Encoding.Default);
             Process.Start("report.csv");
         }
 

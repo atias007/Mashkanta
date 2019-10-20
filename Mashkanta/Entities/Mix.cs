@@ -84,7 +84,7 @@ namespace Mashkanta.Entities
 
         private void SetTotalPayments()
         {
-            var maxPayments = Courses.Max(c => c.StopAtPeriod.HasValue ? c.StopAtPeriod : c.Period);
+            var maxPayments = Courses.Max(c => c.Result.Payments.Max(p=> p.Period));
             TotalPayments.Clear();
 
             for (int i = 0; i < maxPayments; i++)
