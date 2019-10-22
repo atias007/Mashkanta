@@ -39,6 +39,8 @@
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel3 = new System.Windows.Forms.Panel();
             this.grdSum = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTotalFund = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.lblCourse = new System.Windows.Forms.Label();
             this.lblAmount = new System.Windows.Forms.Label();
             this.lblInterest = new System.Windows.Forms.Label();
@@ -63,16 +65,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grdPayments = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblTotalFund = new System.Windows.Forms.Label();
+            this.btnShowHide = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.grdSum.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -85,6 +86,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.btnShowHide);
             this.panel3.Controls.Add(this.grdSum);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(8, 8);
@@ -139,6 +141,30 @@
             this.grdSum.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.grdSum.Size = new System.Drawing.Size(717, 139);
             this.grdSum.TabIndex = 8;
+            // 
+            // lblTotalFund
+            // 
+            this.lblTotalFund.BackColor = System.Drawing.Color.White;
+            this.lblTotalFund.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTotalFund.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lblTotalFund.Location = new System.Drawing.Point(4, 116);
+            this.lblTotalFund.Name = "lblTotalFund";
+            this.lblTotalFund.Size = new System.Drawing.Size(172, 19);
+            this.lblTotalFund.TabIndex = 33;
+            this.lblTotalFund.Text = "0";
+            this.lblTotalFund.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.label11.Location = new System.Drawing.Point(183, 116);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(172, 19);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "יתרת קרן";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCourse
             // 
@@ -427,36 +453,6 @@
             this.panel1.Size = new System.Drawing.Size(598, 577);
             this.panel1.TabIndex = 10;
             // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
             // grdPayments
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -496,6 +492,36 @@
             this.grdPayments.TabIndex = 8;
             this.grdPayments.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdPayments_CellFormatting);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Column2";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Column3";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Column4";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Column5";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
             // panel2
             // 
             this.panel2.AutoScroll = true;
@@ -525,29 +551,16 @@
             title2.Text = "תשלום חודשי";
             this.chart2.Titles.Add(title2);
             // 
-            // label11
+            // btnShowHide
             // 
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.label11.Location = new System.Drawing.Point(183, 116);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(172, 19);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "יתרת קרן";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblTotalFund
-            // 
-            this.lblTotalFund.BackColor = System.Drawing.Color.White;
-            this.lblTotalFund.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTotalFund.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblTotalFund.Location = new System.Drawing.Point(4, 116);
-            this.lblTotalFund.Name = "lblTotalFund";
-            this.lblTotalFund.Size = new System.Drawing.Size(172, 19);
-            this.lblTotalFund.TabIndex = 33;
-            this.lblTotalFund.Text = "0";
-            this.lblTotalFund.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnShowHide.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnShowHide.Location = new System.Drawing.Point(0, 143);
+            this.btnShowHide.Name = "btnShowHide";
+            this.btnShowHide.Size = new System.Drawing.Size(90, 24);
+            this.btnShowHide.TabIndex = 12;
+            this.btnShowHide.Text = "הסתר טבלה";
+            this.btnShowHide.UseVisualStyleBackColor = true;
+            this.btnShowHide.Click += new System.EventHandler(this.button2_Click);
             // 
             // frmCourseResult
             // 
@@ -614,5 +627,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.Label lblTotalFund;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnShowHide;
     }
 }

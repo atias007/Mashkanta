@@ -332,5 +332,19 @@ namespace Mashkanta
         {
             panel1.Width = _gridWith + 15;
         }
+
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+            if (panel1.Visible)
+            {
+                btnShowHide.Text = "הצג טבלה";
+                panel1.Visible = false;
+            }
+            else
+            {
+                btnShowHide.Text = "הסתר טבלה";
+                panel1.Visible = true;
+            }
+        }
     }
 }

@@ -15,8 +15,16 @@ namespace Mashkanta.Courses
 
             for (int i = 0; i < periods; i++)
             {
-                var priceIndex = forecast2.GetValue(request.StartMonth + i) / 12;
-                var baseInterest = forecast1.GetValue(request.StartMonth + i);
+                var priceIndex =
+                    request.WithForecast ?
+                    forecast2.GetValue(request.StartMonth + i) / 12 :
+                    forecast2.GetValue(1) / 12;
+
+                var baseInterest =
+                    request.WithForecast ?
+                    forecast1.GetValue(request.StartMonth + i) :
+                    forecast1.GetValue(1);
+
                 var rate = (request.InterestGap + baseInterest) / 12;
                 var pmt = -Utils.Pmt(rate / 100, request.Period - i, fund);
                 var interestPayment = fund * rate / 100;

@@ -36,6 +36,8 @@ namespace Mashkanta
 
         public CourseResult Result { get; set; }
 
+        public bool WithForecast { get; set; } = true;
+
         public void Calc()
         {
             switch (Type)
