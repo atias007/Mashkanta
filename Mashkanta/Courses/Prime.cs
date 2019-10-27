@@ -60,7 +60,7 @@ namespace Mashkanta.Courses
             temp.InterestGap = source.Recycle.InterestGap;
             temp.WithForecast = source.WithForecast;
             temp.Calc();
-
+            //
             source.Result.Payments.AddRange(temp.Result.Payments);
         }
     }
