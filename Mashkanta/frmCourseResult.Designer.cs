@@ -74,6 +74,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnShowHide = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.grdSum.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -86,6 +88,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.lblTotal);
+            this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.btnShowHide);
             this.panel3.Controls.Add(this.grdSum);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -562,6 +566,28 @@
             this.btnShowHide.UseVisualStyleBackColor = true;
             this.btnShowHide.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.Font = new System.Drawing.Font("Tahoma", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label13.Location = new System.Drawing.Point(903, 140);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(110, 24);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "סך ההלוואה:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.lblTotal.Location = new System.Drawing.Point(818, 140);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(110, 24);
+            this.lblTotal.TabIndex = 14;
+            this.lblTotal.Text = "0";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmCourseResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -628,5 +654,7 @@
         private System.Windows.Forms.Label lblTotalFund;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnShowHide;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label label13;
     }
 }

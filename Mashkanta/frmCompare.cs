@@ -55,5 +55,9 @@ namespace Mashkanta
         private void grdCompare_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
         }
+
+        private void toolStripButton1_Click(object sender, System.EventArgs e)
+        {
+        }
     }
 }

@@ -11,7 +11,21 @@ namespace Mashkanta.Entities
             TotalPayments = new List<Payment>();
         }
 
-        public double TotalLoan { get; set; }
+        public double TotalLoan
+        {
+            get
+            {
+                return ActiveCourses.Sum(c => c.Amount);
+            }
+        }
+
+        public List<Course> ActiveCourses
+        {
+            get
+            {
+                return Courses.Where(c => c.Active).ToList();
+            }
+        }
 
         public List<Course> Courses { get; private set; }
 
@@ -31,14 +45,14 @@ namespace Mashkanta.Entities
         {
             get
             {
-                var result = Utils.Round2(Courses.Sum(p => p.Result.TotalInterestAndPriceIndex));
+                var result = Utils.Round2(ActiveCourses.Sum(p => p.Result.TotalInterestAndPriceIndex));
                 return result;
             }
         }
 
         public void Calc()
         {
-            foreach (var item in Courses)
+            foreach (var item in ActiveCourses)
             {
                 item.Calc();
                 item.LoanPercentage = Utils.Round2(item.Amount / TotalLoan);
@@ -63,28 +77,20 @@ namespace Mashkanta.Entities
 
             source.Result.Payments.AddRange(temp.Result.Payments);
             SetTotalPayments();
-            ReCalc();
-        }
-
-        public void ReCalc()
-        {
-            Courses.ForEach(c => c.ReCalc());
-
-            SetVariables();
         }
 
         private void SetVariables()
         {
-            Ratio = Utils.Round2(Courses.Sum(c => c.Result.TotalReturn) / TotalLoan);
+            Ratio = Utils.Round2(ActiveCourses.Sum(c => c.Result.TotalReturn) / TotalLoan);
             MaxMonthReturn = Utils.Round2(TotalPayments.Max(p => p.TotalPayment));
             MinMonthReturn = Utils.Round2(TotalPayments.First().TotalPayment);
-            TotalReturn = Utils.Round2(Courses.Sum(p => p.Result.TotalReturn));
-            TotalRemainingFund = Utils.Round2(Courses.Sum(p => p.Result.RemainingFund));
+            TotalReturn = Utils.Round2(ActiveCourses.Sum(p => p.Result.TotalReturn));
+            TotalRemainingFund = Utils.Round2(ActiveCourses.Sum(p => p.Result.RemainingFund));
         }
 
         private void SetTotalPayments()
         {
-            var maxPayments = Courses.Max(c => c.Result.Payments.Max(p=> p.Period));
+            var maxPayments = ActiveCourses.Max(c => c.Result.Payments.Max(p => p.Period));
             TotalPayments.Clear();
 
             for (int i = 0; i < maxPayments; i++)
@@ -111,7 +117,7 @@ namespace Mashkanta.Entities
         {
             var result = new List<Payment>();
 
-            foreach (var c in Courses)
+            foreach (var c in ActiveCourses)
             {
                 var currentPayment = c.Result.Payments.Where(p => p.Period == period + 1).FirstOrDefault();
 

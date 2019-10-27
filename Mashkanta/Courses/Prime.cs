@@ -9,6 +9,7 @@ namespace Mashkanta.Courses
             var result = new CourseResult();
             var fund = request.Amount;
             var forecast = ForecastUtil.Get(ForecastType.Prime);
+            request.StopAtPeriod = request.Recycle == null ? (int?)null : request.Recycle.FromMonth - 1;
 
             var periods = request.StopAtPeriod.HasValue ? request.StopAtPeriod : request.Period;
 
@@ -41,6 +42,26 @@ namespace Mashkanta.Courses
             }
 
             request.Result = result;
+
+            if (request.Recycle != null)
+            {
+                Recycle(request);
+            }
+        }
+
+        private static void Recycle(Course source)
+        {
+            source.Result.SetVariables();
+            var temp = new Course();
+            temp.Type = source.Type;
+            temp.Amount = source.Result.RemainingFund;
+            temp.StartMonth = source.Result.Payments.Count + 1;
+            temp.Period = source.Recycle.Period;
+            temp.InterestGap = source.Recycle.InterestGap;
+            temp.WithForecast = source.WithForecast;
+            temp.Calc();
+
+            source.Result.Payments.AddRange(temp.Result.Payments);
         }
     }
 }

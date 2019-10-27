@@ -49,6 +49,7 @@ namespace Mashkanta
             lblTotalInt.Text = mix.TotalInterestAndPriceIndex.ToString("N2");
             lblTotalReturn.Text = mix.TotalReturn.ToString("N2");
             lblTotalFund.Text = mix.TotalRemainingFund.ToString("N2");
+            lblTotal.Text = mix.TotalLoan.ToString("N2");
 
             grdSum.ColumnStyles[0].Width = 0;
             grdSum.ColumnStyles[1].Width = 0;

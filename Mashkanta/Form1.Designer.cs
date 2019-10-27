@@ -44,9 +44,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnDemo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.colActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInterestGap = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +58,6 @@
             this.colLoanPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colButton = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.txtAmount = new Mashkanta.Controls.CurrencyTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdCourses)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -82,6 +81,7 @@
             // 
             this.grdCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdCourses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colActive,
             this.colType,
             this.colAmount,
             this.colInterestGap,
@@ -111,7 +111,7 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(9, 82);
+            this.panel2.Location = new System.Drawing.Point(9, 45);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(8);
             this.panel2.Size = new System.Drawing.Size(1074, 255);
@@ -165,10 +165,10 @@
             this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel3.Controls.Add(this.tabControl1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(9, 337);
+            this.panel3.Location = new System.Drawing.Point(9, 300);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(8);
-            this.panel3.Size = new System.Drawing.Size(1074, 312);
+            this.panel3.Size = new System.Drawing.Size(1074, 349);
             this.panel3.TabIndex = 6;
             // 
             // tabControl1
@@ -179,7 +179,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeftLayout = true;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1058, 296);
+            this.tabControl1.Size = new System.Drawing.Size(1058, 333);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -187,27 +187,17 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1050, 269);
+            this.tabPage1.Size = new System.Drawing.Size(1050, 306);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "כל המסלולים";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Location = new System.Drawing.Point(8, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1058, 25);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "סך ההלוואה:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // btnDemo
             // 
             this.btnDemo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDemo.Location = new System.Drawing.Point(862, 15);
+            this.btnDemo.Location = new System.Drawing.Point(987, 3);
             this.btnDemo.Name = "btnDemo";
-            this.btnDemo.Size = new System.Drawing.Size(84, 47);
+            this.btnDemo.Size = new System.Drawing.Size(84, 33);
             this.btnDemo.TabIndex = 8;
             this.btnDemo.Text = "הדגמה";
             this.btnDemo.UseVisualStyleBackColor = true;
@@ -216,14 +206,21 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnDemo);
-            this.panel1.Controls.Add(this.txtAmount);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(9, 9);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(8);
-            this.panel1.Size = new System.Drawing.Size(1074, 73);
+            this.panel1.Size = new System.Drawing.Size(1074, 36);
             this.panel1.TabIndex = 4;
+            // 
+            // colActive
+            // 
+            this.colActive.DataPropertyName = "Active";
+            this.colActive.HeaderText = "";
+            this.colActive.Name = "colActive";
+            this.colActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colActive.Width = 32;
             // 
             // colType
             // 
@@ -314,17 +311,6 @@
             this.colButton.ReadOnly = true;
             this.colButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // txtAmount
-            // 
-            this.txtAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAmount.Format = "N0";
-            this.txtAmount.Location = new System.Drawing.Point(952, 36);
-            this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(111, 22);
-            this.txtAmount.TabIndex = 7;
-            this.txtAmount.Text = "0";
-            this.txtAmount.Value = 0D;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -347,7 +333,6 @@
             this.panel3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -365,10 +350,9 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label2;
-        private Controls.CurrencyTextBox txtAmount;
         private System.Windows.Forms.Button btnDemo;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colActive;
         private System.Windows.Forms.DataGridViewComboBoxColumn colType;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInterestGap;

@@ -17,14 +17,16 @@ namespace Mashkanta
 
             _course = course;
             txtCourse.Text = course.Type.ToString();
-            txtPayments.Text = course.Result.Payments.Count().ToString();
+            txtPayments.Text = course.Result == null ? "לא חושב" : course.Result.Payments.Count().ToString();
             txtGap.Text = course.InterestGap.ToString("N2");
         }
 
         private void txtMonth_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtMonth.Text.Trim()))
+            if (_course.Result == null)
             {
+                txtFund.Text = "לא ניתן לחשב";
+                return;
             }
 
             var month = 0;
@@ -48,7 +50,8 @@ namespace Mashkanta
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            Result = new RecycleCourse { FromMonth = int.Parse(txtMonth.Text), InterestGap = double.Parse(txtGap.Text), Period = int.Parse(txtPeriod.Text) };
+            var rc = new RecycleCourse { FromMonth = int.Parse(txtMonth.Text), InterestGap = double.Parse(txtGap.Text), Period = int.Parse(txtPeriod.Text) };
+            _course.Recycle = rc;
         }
     }
 }

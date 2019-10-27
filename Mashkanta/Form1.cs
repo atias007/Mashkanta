@@ -40,8 +40,7 @@ namespace Mashkanta
         {
             _mix = mix;
 
-            txtAmount.Value = _mix.TotalLoan;
-            foreach (var item in mix.Courses)
+            foreach (var item in mix.ActiveCourses)
             {
                 _dataSource.Add(item);
             }
@@ -55,6 +54,7 @@ namespace Mashkanta
             colInterestGap.ReadOnly = true;
             colPeriod.ReadOnly = true;
             grdCourses.Enabled = false;
+            colActive.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -67,8 +67,7 @@ namespace Mashkanta
             button3.Enabled = true;
             _mix = new Mix();
             _mix.Courses.Clear();
-            _mix.TotalLoan = double.Parse(txtAmount.Text);
-            _mix.Courses.AddRange(_dataSource);
+            _mix.Courses.AddRange(_dataSource.Where(c => c.Active));
 
             _mix.Calc();
             RefreshResult();
@@ -88,7 +87,7 @@ namespace Mashkanta
 
             grdCourses.Refresh();
 
-            foreach (var c in _mix.Courses)
+            foreach (var c in _mix.ActiveCourses)
             {
                 var page = new TabPage { Text = c.Type.ToString() };
                 tabControl1.TabPages.Add(page);
@@ -110,7 +109,6 @@ namespace Mashkanta
 
         private void btnDemo_Click(object sender, EventArgs e)
         {
-            txtAmount.Value = 1100000;
             var prime = new Course { Type = Course.CourseType.Prime, Amount = 363000, InterestGap = -0.7, Period = 240 };
             var fix = new Course { Type = Course.CourseType.Fix, Amount = 363000, InterestGap = 3.2, Period = 180 };
             var varpi = new Course { Type = Course.CourseType.VariablePriceIndex, Amount = 374000, InterestGap = 2.59, Period = 120 };
@@ -130,7 +128,7 @@ namespace Mashkanta
                 data += $"{p.Period},{p.PeriodDate:MM/yyyy},{p.InterestMonthPercentage:N4}%,{p.InterestYearPercentage:N4}%,\"{p.InterestPayment:N0}\",\"{p.FundPayment:N0}\",\"{p.FundPaymentWithPriceIndex:N0}\",\"{p.TotalFund:N0}\",\"{p.TotalFundWithPriceIndex:N0}\",\"{p.TotalPayment:N0}\"\r\n";
             }
 
-            foreach (var c in _mix.Courses)
+            foreach (var c in _mix.ActiveCourses)
             {
                 data += $"\r\n{c.Type}\r\n";
                 data += "תקופה,חודש,ריבית חודשי,ריבית שנתי,מדד שנתי,ריבית,קרן,יתרת קרן,תשלום חודשי\r\n";
@@ -150,24 +148,18 @@ namespace Mashkanta
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewLinkColumn && e.RowIndex >= 0)
             {
-                if (_mix.TotalPayments.Count == 0)
+                //if (_mix.TotalPayments.Count == 0)
+                //{
+                //MessageBox.Show("לביצוע מחזור תחילה יש לבצע חישוב", "שגיאה...", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+                //}
+                //else
+                //{
+                var course = senderGrid.Rows[e.RowIndex].DataBoundItem as Course;
+                using (var f = new frmRecycle(course))
                 {
-                    MessageBox.Show("לביצוע מחזור תחילה יש לבצע חישוב", "שגיאה...", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+                    f.ShowDialog(this);
                 }
-                else
-                {
-                    var course = senderGrid.Rows[e.RowIndex].DataBoundItem as Course;
-                    using (var f = new frmRecycle(course))
-                    {
-                        var dialog = f.ShowDialog(this);
-                        if (dialog == DialogResult.OK)
-                        {
-                            _mix.Recycle(course, f.Result);
-                            RefreshResult();
-                            button3.Enabled = true;
-                        }
-                    }
-                }
+                //}
             }
         }
 
@@ -185,7 +177,7 @@ namespace Mashkanta
         {
             var cloneMixJson = JsonConvert.SerializeObject(_mix);
             var cloneMix = JsonConvert.DeserializeObject<Mix>(cloneMixJson);
-            cloneMix.ReCalc();
+            cloneMix.Calc();
             button3.Enabled = false;
             _savedMixes.Add(cloneMix);
             MessageBox.Show("הצעה נשמרה בהצלחה", "הודעה...", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
