@@ -16,6 +16,7 @@ namespace Mashkanta
         private BindingList<Course> _dataSource = new BindingList<Course>();
         private Mix _mix = new Mix();
         private List<Mix> _savedMixes = new List<Mix>();
+        private double _totalLoan = 0;
 
         public Form1()
         {
@@ -105,6 +106,7 @@ namespace Mashkanta
         {
             grdCourses.DataSource = _dataSource;
             colButton.DisplayIndex = grdCourses.Columns.Count - 1;
+            SetTotalLoadLabel();
         }
 
         private void btnDemo_Click(object sender, EventArgs e)
@@ -115,6 +117,8 @@ namespace Mashkanta
             _dataSource.Add(prime);
             _dataSource.Add(fix);
             _dataSource.Add(varpi);
+
+            SetTotalLoadLabel();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -188,6 +192,48 @@ namespace Mashkanta
             using (var f = new frmCompare(_savedMixes))
             {
                 f.ShowDialog();
+            }
+        }
+
+        private void SetTotalLoadLabel()
+        {
+            _totalLoan = _dataSource.Where(d => d.Active).Sum(d => d.Amount);
+            foreach (var item in _dataSource.Where(d => d.Active))
+            {
+                //item.LoanPercentage = Utils.Round2(item.Amount * 100 / _totalLoan);
+            }
+
+            label2.Text = $"סך ההלוואה: {_totalLoan:C0}";
+            grdCourses.Refresh();
+        }
+
+        private void grdCourses_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (grdCourses.Columns[e.ColumnIndex].Name == "colAmount")
+            {
+                var value = Convert.ToString(grdCourses[e.ColumnIndex, e.RowIndex].Value);
+                if (string.IsNullOrEmpty(value) == false)
+                {
+                    var iValue = 0;
+                    if (int.TryParse(value, out iValue))
+                    {
+                        if (iValue < 1000)
+                        {
+                            iValue *= 1000;
+                            grdCourses[e.ColumnIndex, e.RowIndex].Value = iValue;
+                        }
+                    }
+                }
+
+                SetTotalLoadLabel();
+            }
+            else if (grdCourses.Columns[e.ColumnIndex].Name == "colActive")
+            {
+                SetTotalLoadLabel();
+            }
+            else if (grdCourses.Columns[e.ColumnIndex].Name == "colPeriod")
+            {
+                grdCourses.Refresh();
             }
         }
     }

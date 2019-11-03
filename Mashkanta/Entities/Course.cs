@@ -1,6 +1,5 @@
 ﻿using Mashkanta.Courses;
 using Mashkanta.Entities;
-using System.Linq;
 
 namespace Mashkanta
 {
@@ -81,7 +80,10 @@ namespace Mashkanta
             set
             {
                 _recycle = value;
-                StopAtPeriod = _recycle.FromMonth - 1;
+                if (_recycle != null)
+                {
+                    StopAtPeriod = _recycle.FromMonth - 1;
+                }
             }
         }
 

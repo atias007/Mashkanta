@@ -29,23 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.grdCourses = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnDemo = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.colActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +47,18 @@
             this.colLoanPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colButton = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnDemo = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdCourses)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -101,6 +102,105 @@
             this.grdCourses.TabIndex = 2;
             this.grdCourses.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCourses_CellContentClick);
             this.grdCourses.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdCourses_CellFormatting);
+            this.grdCourses.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCourses_CellValueChanged);
+            // 
+            // colActive
+            // 
+            this.colActive.DataPropertyName = "Active";
+            this.colActive.HeaderText = "";
+            this.colActive.Name = "colActive";
+            this.colActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colActive.Width = 32;
+            // 
+            // colType
+            // 
+            this.colType.DataPropertyName = "Type";
+            this.colType.HeaderText = "מסלול";
+            this.colType.Name = "colType";
+            this.colType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colType.Width = 150;
+            // 
+            // colAmount
+            // 
+            this.colAmount.DataPropertyName = "Amount";
+            dataGridViewCellStyle17.Format = "N0";
+            this.colAmount.DefaultCellStyle = dataGridViewCellStyle17;
+            this.colAmount.HeaderText = "סכום";
+            this.colAmount.Name = "colAmount";
+            // 
+            // colInterestGap
+            // 
+            this.colInterestGap.DataPropertyName = "InterestGap";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.Format = "N2";
+            dataGridViewCellStyle18.NullValue = "0";
+            this.colInterestGap.DefaultCellStyle = dataGridViewCellStyle18;
+            this.colInterestGap.HeaderText = "ריבית/מרווח %";
+            this.colInterestGap.Name = "colInterestGap";
+            this.colInterestGap.Width = 120;
+            // 
+            // colPeriod
+            // 
+            this.colPeriod.DataPropertyName = "Period";
+            this.colPeriod.HeaderText = "תקופה (חודשים)";
+            this.colPeriod.Name = "colPeriod";
+            this.colPeriod.Width = 150;
+            // 
+            // colYears
+            // 
+            this.colYears.DataPropertyName = "Years";
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            this.colYears.DefaultCellStyle = dataGridViewCellStyle19;
+            this.colYears.HeaderText = "תקופה (שנים)";
+            this.colYears.Name = "colYears";
+            this.colYears.ReadOnly = true;
+            this.colYears.Width = 150;
+            // 
+            // colStartMonth
+            // 
+            this.colStartMonth.DataPropertyName = "StartMonth";
+            this.colStartMonth.HeaderText = "חודש התחלה";
+            this.colStartMonth.Name = "colStartMonth";
+            // 
+            // colStopAtPeriod
+            // 
+            this.colStopAtPeriod.DataPropertyName = "StopAtPeriod";
+            this.colStopAtPeriod.HeaderText = "חודש עצירה";
+            this.colStopAtPeriod.Name = "colStopAtPeriod";
+            this.colStopAtPeriod.Visible = false;
+            // 
+            // colWithForecast
+            // 
+            this.colWithForecast.DataPropertyName = "WithForecast";
+            this.colWithForecast.HeaderText = "חשב תחזית";
+            this.colWithForecast.Name = "colWithForecast";
+            this.colWithForecast.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colWithForecast.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colLoanPercentage
+            // 
+            this.colLoanPercentage.DataPropertyName = "LoanPercentage";
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            this.colLoanPercentage.DefaultCellStyle = dataGridViewCellStyle20;
+            this.colLoanPercentage.HeaderText = "% מההלוואה";
+            this.colLoanPercentage.Name = "colLoanPercentage";
+            this.colLoanPercentage.ReadOnly = true;
+            // 
+            // colResult
+            // 
+            this.colResult.DataPropertyName = "Result";
+            this.colResult.HeaderText = "colResult";
+            this.colResult.Name = "colResult";
+            this.colResult.Visible = false;
+            // 
+            // colButton
+            // 
+            this.colButton.HeaderText = "מחזור";
+            this.colButton.Name = "colButton";
+            this.colButton.ReadOnly = true;
+            this.colButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // panel2
             // 
@@ -205,6 +305,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnDemo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(9, 9);
@@ -213,103 +314,14 @@
             this.panel1.Size = new System.Drawing.Size(1074, 36);
             this.panel1.TabIndex = 4;
             // 
-            // colActive
+            // label2
             // 
-            this.colActive.DataPropertyName = "Active";
-            this.colActive.HeaderText = "";
-            this.colActive.Name = "colActive";
-            this.colActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colActive.Width = 32;
-            // 
-            // colType
-            // 
-            this.colType.DataPropertyName = "Type";
-            this.colType.HeaderText = "מסלול";
-            this.colType.Name = "colType";
-            this.colType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colType.Width = 150;
-            // 
-            // colAmount
-            // 
-            this.colAmount.DataPropertyName = "Amount";
-            dataGridViewCellStyle1.Format = "N0";
-            this.colAmount.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colAmount.HeaderText = "סכום";
-            this.colAmount.Name = "colAmount";
-            // 
-            // colInterestGap
-            // 
-            this.colInterestGap.DataPropertyName = "InterestGap";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0";
-            this.colInterestGap.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colInterestGap.HeaderText = "ריבית/מרווח %";
-            this.colInterestGap.Name = "colInterestGap";
-            this.colInterestGap.Width = 120;
-            // 
-            // colPeriod
-            // 
-            this.colPeriod.DataPropertyName = "Period";
-            this.colPeriod.HeaderText = "תקופה (חודשים)";
-            this.colPeriod.Name = "colPeriod";
-            this.colPeriod.Width = 150;
-            // 
-            // colYears
-            // 
-            this.colYears.DataPropertyName = "Years";
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            this.colYears.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colYears.HeaderText = "תקופה (שנים)";
-            this.colYears.Name = "colYears";
-            this.colYears.ReadOnly = true;
-            this.colYears.Width = 150;
-            // 
-            // colStartMonth
-            // 
-            this.colStartMonth.DataPropertyName = "StartMonth";
-            this.colStartMonth.HeaderText = "חודש התחלה";
-            this.colStartMonth.Name = "colStartMonth";
-            // 
-            // colStopAtPeriod
-            // 
-            this.colStopAtPeriod.DataPropertyName = "StopAtPeriod";
-            this.colStopAtPeriod.HeaderText = "חודש עצירה";
-            this.colStopAtPeriod.Name = "colStopAtPeriod";
-            this.colStopAtPeriod.Visible = false;
-            // 
-            // colWithForecast
-            // 
-            this.colWithForecast.DataPropertyName = "WithForecast";
-            this.colWithForecast.HeaderText = "חשב תחזית";
-            this.colWithForecast.Name = "colWithForecast";
-            this.colWithForecast.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colWithForecast.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colLoanPercentage
-            // 
-            this.colLoanPercentage.DataPropertyName = "LoanPercentage";
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            this.colLoanPercentage.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colLoanPercentage.HeaderText = "% מההלוואה";
-            this.colLoanPercentage.Name = "colLoanPercentage";
-            this.colLoanPercentage.ReadOnly = true;
-            // 
-            // colResult
-            // 
-            this.colResult.DataPropertyName = "Result";
-            this.colResult.HeaderText = "colResult";
-            this.colResult.Name = "colResult";
-            this.colResult.Visible = false;
-            // 
-            // colButton
-            // 
-            this.colButton.HeaderText = "מחזור";
-            this.colButton.Name = "colButton";
-            this.colButton.ReadOnly = true;
-            this.colButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 14);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "סך ההלוואה: 0 ש\"ח";
             // 
             // Form1
             // 
@@ -333,6 +345,7 @@
             this.panel3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -364,6 +377,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colLoanPercentage;
         private System.Windows.Forms.DataGridViewTextBoxColumn colResult;
         private System.Windows.Forms.DataGridViewLinkColumn colButton;
+        private System.Windows.Forms.Label label2;
     }
 }
 
