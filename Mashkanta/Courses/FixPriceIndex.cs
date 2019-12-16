@@ -10,7 +10,7 @@ namespace Mashkanta.Courses
             var result = new CourseResult();
             var fund = request.Amount;
             var periods = request.StopAtPeriod.HasValue ? request.StopAtPeriod : request.Period;
-            var rate = (request.InterestGap) / 12;
+            var rate = (request.Interest) / 12;
             var pmt = -Utils.Pmt(rate / 100, request.Period, fund);
             var forecast = ForecastUtil.Get(ForecastType.PriceIndex);
 
@@ -29,7 +29,7 @@ namespace Mashkanta.Courses
                 {
                     Period = i + 1,
                     InterestMonthPercentage = Utils.Round4(rate),
-                    InterestYearPercentage = Utils.Round4(request.InterestGap),
+                    InterestYearPercentage = Utils.Round4(request.Interest),
                     PriceIndex = Utils.Round4(priceIndex),
                     TotalFund = Utils.Round2(fund),
                     TotalFundWithPriceIndex = Utils.Round2(fund * (1 + (priceIndex / 100))),

@@ -8,7 +8,7 @@ namespace Mashkanta.Entities
         public Mix()
         {
             Courses = new List<Course>();
-            TotalPayments = new List<Payment>();
+            TotalPayments = new PaymentList();
         }
 
         public double TotalLoan
@@ -29,7 +29,7 @@ namespace Mashkanta.Entities
 
         public List<Course> Courses { get; private set; }
 
-        public List<Payment> TotalPayments { get; private set; }
+        public PaymentList TotalPayments { get; private set; }
 
         public double Ratio { get; private set; }
 
@@ -60,23 +60,6 @@ namespace Mashkanta.Entities
 
             SetTotalPayments();
             SetVariables();
-        }
-
-        public void Recycle(Course source, RecycleCourse recycleCourse)
-        {
-            source.StopAtPeriod = recycleCourse.FromMonth - 1;
-            Calc();
-
-            var temp = new Course();
-            temp.Type = source.Type;
-            temp.Amount = source.Result.RemainingFund;
-            temp.StartMonth = source.Result.Payments.Count + 1;
-            temp.Period = recycleCourse.Period;
-            temp.InterestGap = recycleCourse.InterestGap;
-            temp.Calc();
-
-            source.Result.Payments.AddRange(temp.Result.Payments);
-            SetTotalPayments();
         }
 
         private void SetVariables()
@@ -111,6 +94,23 @@ namespace Mashkanta.Entities
                 };
                 TotalPayments.Add(payment);
             }
+        }
+
+        public string ToHtml()
+        {
+            var report = EmbadedResources.GetEmbeddedResource("Mashkanta.Reports.Report.html");
+            var tableAll = TotalPayments.ToHtml();
+            report = report.Replace("@@TABLE_ALL@@", tableAll);
+
+            var tableCources = string.Empty;
+            foreach (var c in Courses)
+            {
+                tableCources += c.Result.Payments.ToHtml();
+            }
+
+            report = report.Replace("@@TABLE_COURSE@@", tableCources);
+
+            return report;
         }
 
         private List<Payment> GetPayments(int period)

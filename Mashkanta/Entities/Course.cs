@@ -24,7 +24,7 @@ namespace Mashkanta
 
         public double Amount { get; set; }
 
-        public double InterestGap { get; set; }
+        public double Interest { get; set; }
 
         public int Period { get; set; }
 

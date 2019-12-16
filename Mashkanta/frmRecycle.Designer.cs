@@ -33,11 +33,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtCourse = new System.Windows.Forms.TextBox();
             this.txtPayments = new System.Windows.Forms.TextBox();
             this.txtFund = new System.Windows.Forms.TextBox();
-            this.txtGap = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.txtPeriod = new System.Windows.Forms.TextBox();
@@ -89,15 +87,6 @@
             this.label5.Text = "תקופה:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(12, 129);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 24);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "% ריבית / מרווח:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // txtCourse
             // 
             this.txtCourse.Location = new System.Drawing.Point(131, 11);
@@ -122,15 +111,6 @@
             this.txtFund.Size = new System.Drawing.Size(100, 22);
             this.txtFund.TabIndex = 8;
             // 
-            // txtGap
-            // 
-            this.txtGap.Location = new System.Drawing.Point(131, 131);
-            this.txtGap.Name = "txtGap";
-            this.txtGap.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtGap.Size = new System.Drawing.Size(100, 22);
-            this.txtGap.TabIndex = 2;
-            this.txtGap.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -150,7 +130,7 @@
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(84, 46);
             this.btnOk.TabIndex = 13;
-            this.btnOk.Text = "מחזר";
+            this.btnOk.Text = "שמור";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -179,12 +159,10 @@
             this.Controls.Add(this.txtMonth);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.txtGap);
             this.Controls.Add(this.txtPeriod);
             this.Controls.Add(this.txtFund);
             this.Controls.Add(this.txtPayments);
             this.Controls.Add(this.txtCourse);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -210,11 +188,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCourse;
         private System.Windows.Forms.TextBox txtPayments;
         private System.Windows.Forms.TextBox txtFund;
-        private System.Windows.Forms.TextBox txtGap;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.TextBox txtPeriod;

@@ -22,7 +22,7 @@ namespace Mashkanta.Forecast
 
         public List<ForecastItem> Periods { get; private set; }
 
-        public double GetValue(int month)
+        public double GetValue(int month = 1)
         {
             var year = Math.Floor((month - 1) / 12.0) + DateTime.Now.Year;
             var period = Periods.Where(p => p.Year == year).FirstOrDefault();

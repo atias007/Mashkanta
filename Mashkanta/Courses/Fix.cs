@@ -11,7 +11,7 @@
 
             for (int i = 0; i < periods; i++)
             {
-                var rate = (request.InterestGap) / 12;
+                var rate = (request.Interest) / 12;
                 var pmt = -Utils.Pmt(rate / 100, request.Period - i, fund);
                 var interest = fund * rate / 100;
 

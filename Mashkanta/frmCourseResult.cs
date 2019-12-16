@@ -18,7 +18,7 @@ namespace Mashkanta
         {
             lblAmount.Text = course.Amount.ToString("N0");
             lblCourse.Text = course.Type.ToString();
-            lblInterest.Text = course.InterestGap.ToString("N2");
+            lblInterest.Text = course.Interest.ToString("N2");
             lblLoanPercentage.Text = (course.LoanPercentage * 100).ToString("N0") + "%";
             lblMaxReturn.Text = course.Result.MaxMonthReturn.ToString("N2");
             lblMinReturn.Text = course.Result.MinMonthReturn.ToString("N2");

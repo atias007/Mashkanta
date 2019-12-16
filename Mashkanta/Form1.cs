@@ -111,9 +111,9 @@ namespace Mashkanta
 
         private void btnDemo_Click(object sender, EventArgs e)
         {
-            var prime = new Course { Type = Course.CourseType.Prime, Amount = 363000, InterestGap = -0.7, Period = 240 };
-            var fix = new Course { Type = Course.CourseType.Fix, Amount = 363000, InterestGap = 3.2, Period = 180 };
-            var varpi = new Course { Type = Course.CourseType.VariablePriceIndex, Amount = 374000, InterestGap = 2.59, Period = 120 };
+            var prime = new Course { Type = Course.CourseType.Prime, Amount = 363000, Interest = 1.05, Period = 240 };
+            var fix = new Course { Type = Course.CourseType.Fix, Amount = 363000, Interest = 3.2, Period = 180 };
+            var varpi = new Course { Type = Course.CourseType.Fix, Amount = 374000, Interest = 2.85, Period = 120 };
             _dataSource.Add(prime);
             _dataSource.Add(fix);
             _dataSource.Add(varpi);
@@ -123,6 +123,8 @@ namespace Mashkanta
 
         private void button2_Click(object sender, EventArgs e)
         {
+            var x = _mix.ToHtml();
+
             var data = string.Empty;
 
             data += "Total\r\n";

@@ -12,6 +12,7 @@ namespace Mashkanta.Courses
             var periods = request.StopAtPeriod.HasValue ? request.StopAtPeriod : request.Period;
             var forecast1 = ForecastUtil.Get(ForecastType.VariablePriceIndex);
             var forecast2 = ForecastUtil.Get(ForecastType.PriceIndex);
+            var zeroInterest = forecast1.GetValue();
 
             for (int i = 0; i < periods; i++)
             {
@@ -22,10 +23,10 @@ namespace Mashkanta.Courses
 
                 var baseInterest =
                     request.WithForecast ?
-                    forecast1.GetValue(request.StartMonth + i) :
-                    forecast1.GetValue(1);
+                    forecast1.GetValue(request.StartMonth + i) - zeroInterest :
+                    0;
 
-                var rate = (request.InterestGap + baseInterest) / 12;
+                var rate = (request.Interest + baseInterest) / 12;
                 var pmt = -Utils.Pmt(rate / 100, request.Period - i, fund);
                 var interestPayment = fund * rate / 100;
                 var fundPayment = pmt - interestPayment;

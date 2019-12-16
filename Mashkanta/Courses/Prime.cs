@@ -12,14 +12,15 @@ namespace Mashkanta.Courses
             request.StopAtPeriod = request.Recycle == null ? (int?)null : request.Recycle.FromMonth - 1;
 
             var periods = request.StopAtPeriod.HasValue ? request.StopAtPeriod : request.Period;
+            var boiInterest = forecast.GetValue();
 
             for (int i = 0; i < periods; i++)
             {
                 var baseInterest = request.WithForecast ?
-                    forecast.GetValue(request.StartMonth + i) :
-                    forecast.GetValue(1);
+                    forecast.GetValue(request.StartMonth + i) - boiInterest :
+                    0;
 
-                var rate = (baseInterest + 1.5 + request.InterestGap) / 12;
+                var rate = (baseInterest + request.Interest) / 12;
                 var pmt = -Utils.Pmt(rate / 100, request.Period - i, fund);
                 var interest = fund * rate / 100;
 
@@ -57,7 +58,7 @@ namespace Mashkanta.Courses
             temp.Amount = source.Result.RemainingFund;
             temp.StartMonth = source.Result.Payments.Count + 1;
             temp.Period = source.Recycle.Period;
-            temp.InterestGap = source.Recycle.InterestGap;
+            temp.Interest = source.Interest;
             temp.WithForecast = source.WithForecast;
             temp.Calc();
             //

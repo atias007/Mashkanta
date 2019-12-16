@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Mashkanta.Entities;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Mashkanta
@@ -7,7 +8,7 @@ namespace Mashkanta
     {
         public CourseResult()
         {
-            Payments = new List<Payment>();
+            Payments = new PaymentList();
         }
 
         public double TotalReturn { get; set; }
@@ -22,7 +23,7 @@ namespace Mashkanta
 
         public double RemainingFund { get; set; }
 
-        public List<Payment> Payments { get; private set; }
+        public PaymentList Payments { get; private set; }
 
         public void SetVariables()
         {
