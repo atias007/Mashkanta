@@ -52,7 +52,7 @@ namespace Mashkanta
             colButton.Visible = false;
             colType.ReadOnly = true;
             colAmount.ReadOnly = true;
-            colInterestGap.ReadOnly = true;
+            colInterest.ReadOnly = true;
             colPeriod.ReadOnly = true;
             grdCourses.Enabled = false;
             colActive.Visible = false;
@@ -107,6 +107,16 @@ namespace Mashkanta
             grdCourses.DataSource = _dataSource;
             colButton.DisplayIndex = grdCourses.Columns.Count - 1;
             SetTotalLoadLabel();
+
+            colActive.DisplayIndex = 0;
+            colAmount.DisplayIndex = 1;
+            colType.DisplayIndex = 2;
+            colInterest.DisplayIndex = 3;
+            colPeriod.DisplayIndex = 4;
+            colYears.DisplayIndex = 5;
+            colLoanPercentage.DisplayIndex = 6;
+            colButton.DisplayIndex = 7;
+            colWithForecast.DisplayIndex = 8;
         }
 
         private void btnDemo_Click(object sender, EventArgs e)
@@ -123,29 +133,10 @@ namespace Mashkanta
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var x = _mix.ToHtml();
+            var report = _mix.ToHtml();
 
-            var data = string.Empty;
-
-            data += "Total\r\n";
-            data += "תקופה,חודש,ריבית חודשי,ריבית שנתי,ריבית,קרן,קרן צמודה,יתרת קרן,יתרת קרן צמודה,תשלום חודשי\r\n";
-            foreach (var p in _mix.TotalPayments)
-            {
-                data += $"{p.Period},{p.PeriodDate:MM/yyyy},{p.InterestMonthPercentage:N4}%,{p.InterestYearPercentage:N4}%,\"{p.InterestPayment:N0}\",\"{p.FundPayment:N0}\",\"{p.FundPaymentWithPriceIndex:N0}\",\"{p.TotalFund:N0}\",\"{p.TotalFundWithPriceIndex:N0}\",\"{p.TotalPayment:N0}\"\r\n";
-            }
-
-            foreach (var c in _mix.ActiveCourses)
-            {
-                data += $"\r\n{c.Type}\r\n";
-                data += "תקופה,חודש,ריבית חודשי,ריבית שנתי,מדד שנתי,ריבית,קרן,יתרת קרן,תשלום חודשי\r\n";
-                foreach (var p in c.Result.Payments)
-                {
-                    data += $"{p.Period},{p.PeriodDate:MM/yyyy},{p.InterestMonthPercentage:N4}%,{p.InterestYearPercentage:N4}%,{p.PriceIndex:N4}%,\"{p.InterestPayment:N0}\",\"{p.FundPayment:N0}\",\"{p.FundPaymentWithPriceIndex:N0}\",\"{p.TotalFund:N0}\",\"{p.TotalFundWithPriceIndex:N0}\",\"{p.TotalPayment:N0}\"\r\n";
-                }
-            }
-
-            File.WriteAllText("report.csv", data, Encoding.Default);
-            Process.Start("report.csv");
+            File.WriteAllText("reports\\data_report.html", report, Encoding.UTF8);
+            Process.Start("reports\\data_report.html");
         }
 
         private void grdCourses_CellContentClick(object sender, DataGridViewCellEventArgs e)

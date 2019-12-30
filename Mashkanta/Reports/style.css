@@ -1,12 +1,18 @@
 ﻿body {
-    font-family: "Helvetica Neue", Helvetica, Arial;
-    font-size: 14px;
-    line-height: 20px;
+    font-family: Tahoma;
+    font-size: 12px;
+    line-height: 16px;
     font-weight: 400;
     color: #3b3b3b;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
     direction: rtl;
+}
+
+hr {
+    margin: 0 0 40px 0;
+    border: 0;
+    border-top: 1px dashed #8c8b8b;
 }
 
 .wrapper {
@@ -15,12 +21,30 @@
     max-width: 800px;
 }
 
+.table_header {
+    margin-bottom: 14px;
+    color: #777;
+    font-size: 2.2em;
+    font-family: 'Open Sans Hebrew Condensed', serif;
+}
+
+.table_header2 {
+    margin-bottom: 10px;
+    color: #777;
+    font-size: 1.7em;
+    font-family: 'Open Sans Hebrew Condensed', serif;
+}
+
 .table {
     margin: 0 0 40px 0;
     width: 100%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     display: table;
 }
+
+    .table.index {
+        margin: 0 0 20px 0;
+    }
 
 .row {
     display: table-row;
@@ -45,7 +69,23 @@
         background: #2980b9;
     }
 
+    .row.gray {
+        background: #666;
+    }
+
 .cell {
     padding: 4px 8px;
     display: table-cell;
 }
+
+    .cell.payment_red {
+        background: #ffc1b3;
+    }
+
+    .cell.payment_green {
+        background: #d8e4bc;
+    }
+
+    .cell.payment_blue {
+        background: #c8dcf4;
+    }

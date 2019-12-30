@@ -5,12 +5,6 @@ namespace Mashkanta.Entities
 {
     public class Mix
     {
-        public Mix()
-        {
-            Courses = new List<Course>();
-            TotalPayments = new PaymentList();
-        }
-
         public double TotalLoan
         {
             get
@@ -27,9 +21,11 @@ namespace Mashkanta.Entities
             }
         }
 
-        public List<Course> Courses { get; private set; }
+        public SummeryList Summery { get; private set; } = new SummeryList();
 
-        public PaymentList TotalPayments { get; private set; }
+        public CourseList Courses { get; private set; } = new CourseList();
+
+        public PaymentList TotalPayments { get; private set; } = new PaymentList();
 
         public double Ratio { get; private set; }
 
@@ -59,7 +55,24 @@ namespace Mashkanta.Entities
             }
 
             SetTotalPayments();
+            SetSummery();
             SetVariables();
+        }
+
+        private void SetSummery()
+        {
+            var result = TotalPayments.GroupBy(p => p.Year);
+            foreach (var item in result)
+            {
+                var sum = new Summery
+                {
+                    Year = item.Key,
+                    AveragePayment = item.Average(i => i.TotalPayment),
+                    TotalPayment = item.Sum(i => i.TotalPayment),
+                };
+
+                Summery.Add(sum);
+            }
         }
 
         private void SetVariables()
@@ -99,13 +112,26 @@ namespace Mashkanta.Entities
         public string ToHtml()
         {
             var report = EmbadedResources.GetEmbeddedResource("Mashkanta.Reports.Report.html");
-            var tableAll = TotalPayments.ToHtml();
+            var table1 = EmbadedResources.GetEmbeddedResource("Mashkanta.Reports.Table1.html");
+            var courses = Courses.ToHtml();
+            var summery = Summery.ToHtml();
+
+            table1 = table1.Replace("@@TITLE@@", Course.GetCourseTitle(Course.CourseType.None));
+            table1 = table1.Replace("@@RATIO@@", Ratio.ToString("N2"));
+            table1 = table1.Replace("@@MIN_PAYMENT@@", MinMonthReturn.ToString("N2"));
+            table1 = table1.Replace("@@MAX_PAYMENT@@", MaxMonthReturn.ToString("N2"));
+            table1 = table1.Replace("@@TOTAL_PAYMENT@@", TotalReturn.ToString("N2"));
+            table1 = table1.Replace("@@INTEREST@@", TotalInterestAndPriceIndex.ToString("N2"));
+
+            var tableAll = table1 + TotalPayments.ToHtml(Course.CourseType.None);
+            report = report.Replace("@@COURSES@@", courses);
+            report = report.Replace("@@SUMMERY@@", summery);
             report = report.Replace("@@TABLE_ALL@@", tableAll);
 
             var tableCources = string.Empty;
             foreach (var c in Courses)
             {
-                tableCources += c.Result.Payments.ToHtml();
+                tableCources += c.Result.ToHtml(c.Type);
             }
 
             report = report.Replace("@@TABLE_COURSE@@", tableCources);
