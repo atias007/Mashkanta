@@ -16,6 +16,10 @@ namespace Mashkanta
 
         public double TotalInterestAndPriceIndex { get; set; }
 
+        public double TotalInterest { get; set; }
+
+        public double TotalPriceIndex { get; set; }
+
         public double MaxMonthReturn { get; set; }
 
         public double MinMonthReturn { get; set; }
@@ -30,7 +34,9 @@ namespace Mashkanta
         {
             // for Git Commit
             TotalReturn = Utils.Round2(Payments.Sum(p => p.TotalPayment));
-            TotalInterestAndPriceIndex = Utils.Round2(Payments.Sum(p => p.InterestPayment) + Payments.Sum(p => p.FundPaymentWithPriceIndex) - Payments.Sum(p => p.FundPayment));
+            TotalInterest = Utils.Round2(Payments.Sum(p => p.InterestPayment));
+            TotalPriceIndex = Utils.Round2(Payments.Sum(p => p.PriceIndexPayment));
+            TotalInterestAndPriceIndex = TotalInterest + TotalPriceIndex;
             MaxMonthReturn = Payments.Max(p => p.TotalPayment);
             MinMonthReturn = Payments.Min(p => p.TotalPayment);
             Ratio = Utils.Round2(TotalReturn / Payments.Sum(p => p.FundPayment));

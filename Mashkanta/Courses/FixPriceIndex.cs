@@ -31,6 +31,7 @@ namespace Mashkanta.Courses
                     InterestMonthPercentage = Utils.Round4(rate),
                     InterestYearPercentage = Utils.Round4(request.Interest),
                     PriceIndex = Utils.Round4(priceIndex),
+                    PriceIndexPayment = Utils.Round2(fundPayment * (Math.Pow(1 + (priceIndex / 100), i + 1) - 1)),
                     TotalFund = Utils.Round2(fund),
                     TotalFundWithPriceIndex = Utils.Round2(fund * (1 + (priceIndex / 100))),
                     InterestPayment = Utils.Round2(interestPayment),

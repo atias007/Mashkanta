@@ -16,6 +16,8 @@ namespace Mashkanta
 
         public double InterestPayment { get; set; }
 
+        public double PriceIndexPayment { get; set; }
+
         public double FundPayment { get; set; }
 
         public double FundPaymentWithPriceIndex { get; set; }

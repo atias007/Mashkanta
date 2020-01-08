@@ -295,6 +295,23 @@ namespace Mashkanta
                     break;
 
                 case "FundPaymentWithPriceIndex":
+                    switch (type)
+                    {
+                        case Course.CourseType.Fix:
+                        case Course.CourseType.Prime:
+                        case Course.CourseType.Variable:
+                            result = false;
+                            break;
+
+                        case Course.CourseType.None:
+                        case Course.CourseType.FixPriceIndex:
+                        case Course.CourseType.VariablePriceIndex:
+                        default:
+                            result = true;
+                            break;
+                    }
+                    break;
+
                 case "TotalFundWithPriceIndex":
                 case "PriceIndex":
                     switch (type)

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Charts\PaymentDoughnut.cs" />
     <Compile Include="Controls\CurrencyTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -117,6 +118,7 @@
     <EmbeddedResource Include="Reports\Table2Row.html" />
     <EmbeddedResource Include="Reports\TableCourse.html" />
     <EmbeddedResource Include="Reports\TableCourseRows.html" />
+    <EmbeddedResource Include="Reports\PaymentDoughnut.html" />
     <Content Include="Reports\Template.html" />
     <Content Include="Reports\style.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

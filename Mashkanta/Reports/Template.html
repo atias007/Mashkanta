@@ -456,31 +456,65 @@
             </div>
         </div>
 
-        <div class="chart-container" style="position: relative; height:20vh; width:40vw">
-            <canvas id="myChart"></canvas>
-        </div>
+        <!--<div class="chart-container" style="position: relative; height:20vh; width:40vw">-->
+        <canvas id="myChart"></canvas>
+        <!--</div>-->
+        <script type="text/javascript">
+            var ctx = document.getElementById('myChart');
+
+            var myDoughnutChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['ריבית 88,697', '125,258 הצמדה', '1,100,000 קרן'],
+                    datasets: [{
+                        data: [32, 48, 20],
+                        backgroundColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(54, 162, 235, 1)',
+                        ]
+                    }],
+                }
+            });
+        </script>
     </div>
 
     <script type="text/javascript">
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'line',
+        ////var ctx = document.getElementById('myChart');
 
-            // The data for our dataset
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                    label: 'My First dataset',
-                    //backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45]
-                }]
-            },
+        ////var myDoughnutChart = new Chart(ctx, {
+        ////    type: 'doughnut',
+        ////    data: {
+        ////        labels: ['ריבית 88,697', '125,258 הצמדה', '1,100,000 קרן'],
+        ////        datasets: [{
+        ////            data: [32, 48, 20],
+        ////            backgroundColor: [
+        ////                'rgba(255,99,132,1)',
+        ////                'rgba(255, 206, 86, 1)',
+        ////                'rgba(54, 162, 235, 1)',
+        ////            ]
+        ////        }],
+        ////    }
+        ////});
 
-            // Configuration options go here
-            options: {}
-        });
+        ////var chart = new Chart(null, {
+        ////    // The type of chart we want to create
+        ////    type: 'line',
+
+        ////    // The data for our dataset
+        ////    data: {
+        ////        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        ////        datasets: [{
+        ////            label: 'My First dataset',
+        ////            //backgroundColor: 'rgb(255, 99, 132)',
+        ////            borderColor: 'rgb(255, 99, 132)',
+        ////            data: [0, 10, 5, 2, 20, 30, 45]
+        ////        }]
+        ////    },
+
+        ////    // Configuration options go here
+        ////    options: {}
+        ////});
     </script>
 </body>
 </html>

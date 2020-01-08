@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Mashkanta.Charts;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Mashkanta.Entities
@@ -42,6 +43,24 @@ namespace Mashkanta.Entities
             get
             {
                 var result = Utils.Round2(ActiveCourses.Sum(p => p.Result.TotalInterestAndPriceIndex));
+                return result;
+            }
+        }
+
+        public double TotalInterest
+        {
+            get
+            {
+                var result = Utils.Round2(ActiveCourses.Sum(p => p.Result.TotalInterest));
+                return result;
+            }
+        }
+
+        public double TotalPriceIndex
+        {
+            get
+            {
+                var result = Utils.Round2(ActiveCourses.Sum(p => p.Result.TotalPriceIndex));
                 return result;
             }
         }
@@ -127,6 +146,7 @@ namespace Mashkanta.Entities
             report = report.Replace("@@COURSES@@", courses);
             report = report.Replace("@@SUMMERY@@", summery);
             report = report.Replace("@@TABLE_ALL@@", tableAll);
+            report = report.Replace("@@PaymentDoughnutChart@@", new PaymentDoughnut(this, "PaymentDoughnutChart").ToHtml());
 
             var tableCources = string.Empty;
             foreach (var c in Courses)

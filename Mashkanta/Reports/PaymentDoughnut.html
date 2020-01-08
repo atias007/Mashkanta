@@ -1,0 +1,15 @@
+﻿<canvas id="@@NAME@@"></canvas>
+<script type="text/javascript">
+    var ctx = document.getElementById('@@NAME@@');
+
+    var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [@@LABELS@@],
+            datasets: [{
+                data: [@@DATA@@],
+                backgroundColor: [@@COLORS@@]
+            }],
+        }
+    });
+</script>
